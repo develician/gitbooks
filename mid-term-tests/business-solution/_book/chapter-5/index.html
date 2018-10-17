@@ -1,0 +1,312 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>5. 안전하지 않은 코드 허용의 의미 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="../chapter-4/" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    중간고사 문제 정리
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1.1" data-path="../chapter-1/">
+            
+                <a href="../chapter-1/">
+            
+                    
+                    1. OpenAPI 란 무엇인가?
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.2" data-path="../chapter-2/">
+            
+                <a href="../chapter-2/">
+            
+                    
+                    2. ORACLE DB 설치 및 환경 설정 절차
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.3" data-path="../chapter-3/">
+            
+                <a href="../chapter-3/">
+            
+                    
+                    3. 지연메서드를 사용하는 이유
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.4" data-path="../chapter-4/">
+            
+                <a href="../chapter-4/">
+            
+                    
+                    4. 요청번호를 사용하는 이유
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.1.5" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    5. 안전하지 않은 코드 허용의 의미
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >5. 안전하지 않은 코드 허용의 의미</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="unsafe-code--&#xC548;&#xC804;&#xD558;&#xC9C0;-&#xC54A;&#xC740;-&#xCF54;&#xB4DC;-&#xD5C8;&#xC6A9;&#xC758;-&#xC758;&#xBBF8;-">UNSAFE CODE / &#xC548;&#xC804;&#xD558;&#xC9C0; &#xC54A;&#xC740; &#xCF54;&#xB4DC; &#xD5C8;&#xC6A9;&#xC758; &#xC758;&#xBBF8; ?</h1>
+<p>&#xC548;&#xC804;&#xD558;&#xC9C0; &#xC54A;&#xC740; &#xCF54;&#xB4DC;&#xB97C; &#xC124;&#xC815;&#xD558;&#xAC8C; &#xB418;&#xBA74; &#xB2E4;&#xC74C;&#xC774; &#xAC00;&#xB2A5;&#xD558;&#xB2E4;.</p>
+<ul>
+<li><p>&#xBC30;&#xC5F4; &#xBC94;&#xC704;&#xB97C; &#xAC80;&#xC0AC;&#xD558;&#xC9C0; &#xC54A;&#xC544;&#xC11C; &#xC131;&#xB2A5;&#xC740; &#xD5A5;&#xC0C1;&#xB418;&#xACE0; &#xC2E0;&#xB8B0;&#xC131;&#xC740; &#xB5A8;&#xC5B4;&#xC9C8; &#xC218; &#xC788;&#xB2E4;.</p>
+</li>
+<li><p>&#xB124;&#xC774;&#xD2F0;&#xBE0C; &#xC5B4;&#xC148;&#xBE14;&#xB9AC;&#xB97C; &#xC0AC;&#xC6A9;&#xD558;&#xB294; &#xACBD;&#xC6B0; &#xD544;&#xC694;&#xD558;&#xB2E4;.</p>
+</li>
+<li><p>unsafe &#xD55C; &#xCF54;&#xB4DC;&#xB97C; &#xD3EC;&#xD568;&#xD558;&#xACE0; &#xC788;&#xB294; &#xC778;&#xC2A4;&#xD134;&#xC2A4;&#xB294; fixed &#xB85C; &#xACE0;&#xC815;&#xC2DC;&#xD0A4;&#xC9C0; &#xC54A;&#xC73C;&#xBA74; gc &#xC5D0; &#xC758;&#xD574; &#xC778;&#xC2A4;&#xD134;&#xC2A4;&#xC758; &#xD560;&#xB2F9; &#xC704;&#xCE58;&#xAC00; &#xBC14;&#xB00C;&#xBA74;&#xC11C; unsafe &#xD55C; &#xD615;&#xC2DD;&#xC758; &#xB0B4;&#xC6A9;&#xC774; &#xC5C9;&#xB6B1;&#xD558;&#xAC8C; &#xB418;&#xC5B4; &#xBC84;&#xB9B4; &#xC218; &#xC788;&#xB2E4;.</p>
+</li>
+<li><p>unsafe &#xD55C; &#xCF54;&#xB4DC;&#xB97C; &#xD3EC;&#xD568;&#xD558;&#xACE0; &#xC788;&#xB294; &#xD615;&#xC2DD;&#xC5D0;&#xB294; &#xC18C;&#xBA78;&#xC790;&#xB97C; &#xC815;&#xC758;&#xB97C; &#xD558;&#xC5EC; gc &#xC5D0; &#xC758;&#xD574; &#xC218;&#xC9D1;&#xB418;&#xAE30;&#xC804;&#xC5D0; unsafe &#xD55C; &#xD615;&#xC2DD; &#xC778;&#xC2A4;&#xD134;&#xC2A4;&#xC5D0; &#xB300;&#xD55C; &#xC790;&#xC6D0; &#xD574;&#xC81C;&#xB97C; &#xD558;&#xC9C0; &#xC54A;&#xC73C;&#xBA74; &#xBA54;&#xBAA8;&#xB9AC; &#xB204;&#xC218;&#xAC00; &#xC0DD;&#xAE38;&#xC218; &#xC788;&#xB2E4;.</p>
+</li>
+<li><p>&#xC18C;&#xC2A4; &#xBC0F; &#xB300;&#xC0C1; &#xBC30;&#xC5F4;&#xC758; &#xBA54;&#xBAA8;&#xB9AC; &#xB0B4; &#xC704;&#xCE58;&#xAC00; &#xACE0;&#xC815;&#xB418;&#xC5B4; &#xAC00;&#xBE44;&#xC9C0; &#xC218;&#xC9D1;&#xC5D0; &#xC758;&#xD574; &#xC774;&#xB3D9;&#xD558;&#xC9C0; &#xC54A;&#xB294;&#xB2E4;.</p>
+</li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../chapter-4/" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 4. 요청번호를 사용하는 이유">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"5. 안전하지 않은 코드 허용의 의미","level":"1.1.5","depth":2,"previous":{"title":"4. 요청번호를 사용하는 이유","level":"1.1.4","depth":2,"path":"chapter-4/README.md","ref":"chapter-4/README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"chapter-5/README.md","mtime":"2018-10-17T16:54:03.139Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-10-17T16:46:10.624Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
