@@ -1,0 +1,357 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>6 주차 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="../" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    title
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    6 주차
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >6 주차</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <blockquote>
+<h3 id="interface">interface</h3>
+</blockquote>
+<ol>
+<li>&#xC0C1;&#xC18D;: is</li>
+<li>&#xC804;&#xC5D0; &#xC0DD;&#xC131;&#xD588;&#xB358; token &#xC758; &#xC8FC;&#xC18C;&#xB85C; &#xC7AC;&#xC0DD;&#xC131;</li>
+</ol>
+<p><code>SampleToken</code></p>
+<pre><code class="lang-solidity">pragma solidity ^0.4.24;
+
+contract ERC20TokenComplete {
+
+    string public constant name = &quot;test&quot;;
+    string public constant symbol = &quot;t&quot;;
+    uint8 public constant decimals = 0;
+
+    uint256 public totalSupply ;
+
+    mapping(address =&gt; uint256) public balanceOf;
+
+    event Transfer(address indexed from, address indexed to, uint256 value);
+    event Burn(address indexed from, uint256 value);
+
+    address owner; // &#xD1A0;&#xD070; &#xBC1C;&#xD589;&#xC790;
+
+    modifier onlyOwner() {
+        require(msg.sender == owner);
+        _;
+    }
+
+    constructor (
+        uint256 _totalSupply
+    ) public {
+        owner = msg.sender;
+        totalSupply = _totalSupply * 10 ** uint256(decimals);
+        balanceOf[msg.sender] = totalSupply;
+        Transfer(address(this), msg.sender, totalSupply);
+        assert(true);
+    }
+
+    function transfer(address to, uint amount)  public returns(bool) {
+        require(balanceOf[msg.sender] &gt;= amount); // &#xBCF4;&#xB0B4;&#xB294; &#xC0AC;&#xB78C;&#xC758; &#xBCF4;&#xC720;&#xB7C9; &#xD655;&#xC778;
+        balanceOf[msg.sender] -= amount;
+        balanceOf[to] += amount;
+        Transfer(msg.sender, to, amount);
+    }
+
+    function burn(uint amount) onlyOwner public {
+        require(totalSupply &gt;= amount); // &#xC804;&#xCCB4; &#xBCF4;&#xC720;&#xB7C9; &#xD655;&#xC778;
+        balanceOf[msg.sender] -= amount;
+        totalSupply -= amount;
+        emit Burn(msg.sender, amount);
+    }
+
+    function addPublish(uint amount) onlyOwner public{
+        totalSupply += amount * 10 ** uint(decimals); // totalSupply = totalSupply + amount * 10 ** uint(decimals);
+        balanceOf[msg.sender] +=  amount * 10 ** uint(decimals);
+    }
+}
+</code></pre>
+<p>ICO contract</p>
+<p><code>SampleICOContract</code></p>
+<pre><code class="lang-solidity">interface token {
+    function transfer(address to, uint amount) public returns(bool);
+    function balanceOf(address addr) returns (uint);
+}
+
+contract ICO {
+    address beneficiary;
+    uint fundingGoal;
+    uint decimals = 0;
+    uint price;
+    token tokenReward;
+    address tokenAddress;
+    address owner;
+
+    constructor(
+        address ifSuccessfulSendTo,
+        uint fundingGoalInEthers,
+        uint etherCostOfEachToken,
+        address addressOfTokenUsedAsReward
+    ) {
+        beneficiary = ifSuccessfulSendTo;
+        fundingGoal = fundingGoalInEthers * 10 ** uint256(decimals);
+        price = (1 ether / etherCostOfEachToken);
+        tokenReward = token(addressOfTokenUsedAsReward);
+        tokenAddress = addressOfTokenUsedAsReward;
+        owner = msg.sender;
+    }
+
+    function () payable {
+        tokenReward.transfer(msg.sender, msg.value / price * 10 ** uint256(decimals));
+
+    }
+
+    function getBalanceOf(address addr) public view returns (uint) {
+        return tokenReward.balanceOf(addr);
+    }
+}
+</code></pre>
+<ol>
+<li>Token Contract &#xC0DD;&#xC131;</li>
+<li>ICO Contract &#xC0DD;&#xC131;</li>
+<li>ICO Contract &#xC5D0;&#xAC8C; &#xD310;&#xB9E4;&#xD560; &#xD1A0;&#xD070; &#xC804;&#xC1A1;</li>
+<li>ICO Contract &#xC5D0;&#xAC8C; &#xC0AC;&#xB78C;&#xB4E4;&#xC774; &#xC774;&#xB354;&#xB97C; &#xBCF4;&#xB0B4;&#xBA74; &#xD1A0;&#xD070;&#xC744; &#xC900;&#xB2E4;.</li>
+<li>&#xC138;&#xC77C;&#xC988; &#xC885;&#xB8CC;</li>
+<li>&#xC774;&#xB354; &#xD658;&#xAE09;<ol>
+<li>&#xBA39;&#xD280; =&gt; scam</li>
+</ol>
+</li>
+<li>&#xD1A0;&#xD070; &#xD658;&#xAE09;</li>
+</ol>
+<p>1-3 &#xC900;&#xBE44;
+4 &#xC9C4;&#xD589;
+5-7 &#xB05D;</p>
+<p>ICO : &#xC0C1;&#xC810;
+Token: &#xC740;&#xD589;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../" class="navigation navigation-prev navigation-unique" aria-label="Previous page: title">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"6 주차","level":"1.2","depth":1,"previous":{"title":"title","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"chapter-6/README.md","mtime":"2018-10-20T06:22:04.770Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-10-20T06:20:19.873Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
