@@ -1,0 +1,277 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>1. Annotations · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="../" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Spring Framework 정리
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    1. Annotations
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >1. Annotations</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="annotations-&#xC5B4;&#xB178;&#xD14C;&#xC774;&#xC158;">Annotations (&#xC5B4;&#xB178;&#xD14C;&#xC774;&#xC158;)</h1>
+<h2 id="&#xC5B4;&#xB178;&#xD14C;&#xC774;&#xC158;&#xC774;&#xB780;-">&#xC5B4;&#xB178;&#xD14C;&#xC774;&#xC158;&#xC774;&#xB780; ?</h2>
+<blockquote>
+<p>&#xC5B4;&#xB178;&#xD14C;&#xC774;&#xC158;&#xC744; &#xC815;&#xC758;&#xD568;&#xC73C;&#xB85C;&#xC368; &#xB9CE;&#xC740; &#xCEE8;&#xD14D;&#xC2A4;&#xD2B8;&#xB97C; &#xC81C;&#xACF5;&#xD574;&#xC8FC;&#xB294; &#xC5ED;&#xD560;&#xC744; &#xD55C;&#xB2E4;.
+&#xC5B4;&#xB178;&#xD14C;&#xC774;&#xC158;&#xC774; &#xB098;&#xC624;&#xAE30; &#xC804;&#xC5D0;&#xB294; &#xB9CE;&#xC740;&#xAC83;&#xC774; xml &#xB85C; &#xAD00;&#xB9AC;&#xB418;&#xC5C8;&#xB294;&#xB370;, &#xC694;&#xC998;&#xC740; annotation &#xC744; &#xC815;&#xC758;&#xD568;&#xC73C;&#xB85C;&#xC368; Spring Framework &#xC5D0;&#xC11C; &#xC81C;&#xACF5;&#xD558;&#xB294; &#xB9CE;&#xC740; &#xAE30;&#xB2A5;&#xB4E4;&#xC744; &#xC0AC;&#xC6A9;&#xD560;&#xC218; &#xC788;&#xB2E4;.</p>
+</blockquote>
+<h3 id="required">@Required</h3>
+<p>bean setter methods &#xB85C; &#xC801;&#xC6A9;&#xB41C;&#xB2E4;.
+&#xD544;&#xC694;&#xD55C; &#xC18D;&#xC131;&#xC5D0; &#xB300;&#xD574; &#xC9C0;&#xC815;&#xD574;&#xC8FC;&#xB294; &#xC5B4;&#xB178;&#xD14C;&#xC774;&#xC158;&#xC774;&#xB2E4;.</p>
+<h3 id="autowired">@Autowired</h3>
+<p>&#xC18D;&#xC131;, &#xC138;&#xD130; &#xBA54;&#xC18C;&#xB4DC;, &#xC0DD;&#xC131;&#xC790;&#xC5D0;&#xC11C; &#xC0AC;&#xC6A9;&#xB41C;&#xB2E4;. &#xBB34;&#xC870;&#xAC74;&#xC801;&#xC778; &#xAC1D;&#xCCB4;&#xC5D0; &#xB300;&#xD55C; &#xC758;&#xC874;&#xC131;&#xC744; &#xC8FC;&#xC785;&#xC2DC;&#xD0A8;&#xB2E4;. @Autowired &#xB97C; &#xC0AC;&#xC6A9;&#xD560;&#xC2DC; Spring &#xC774; &#xC790;&#xB3D9;&#xC801;&#xC73C;&#xB85C; &#xAC12;&#xC744; &#xD560;&#xB2F9;&#xD55C;&#xB2E4;.</p>
+<h3 id="controller">@Controller</h3>
+<p>Spring Controller &#xD074;&#xB798;&#xC2A4;&#xB97C; &#xB098;&#xD0C0;&#xB0B8;&#xB2E4;. Spring MVC &#xC5D0;&#xC11C; &#xCEE8;&#xD2B8;&#xB864;&#xB7EC;&#xB4E4;&#xC744; &#xAD6C;&#xBD84;&#xD558;&#xAE30; &#xC704;&#xD574; &#xC4F0;&#xC778;&#xB2E4;.</p>
+<h3 id="service">@Service</h3>
+<p>class &#xC5D0;&#xC11C; &#xC4F0;&#xC778;&#xB2E4;. &#xC5B4;&#xB5A0;&#xD55C; &#xC11C;&#xBE44;&#xC2A4;&#xB97C; &#xC81C;&#xACF5;&#xD558;&#xB294; &#xD074;&#xB798;&#xC2A4;&#xB97C; &#xB098;&#xD0C0;&#xB0B8;&#xB2E4;. (&#xBE44;&#xC988;&#xB2C8;&#xC2A4; &#xB85C;&#xC9C1;, &#xC678;&#xBD80; API &#xD638;&#xCD9C;&#xC744; &#xD558;&#xB294; &#xBAA9;&#xC801;&#xC73C;&#xB85C; &#xC4F0;&#xC774;&#xB294; &#xB85C;&#xC9C1;)</p>
+<h3 id="repository">@Repository</h3>
+<p>DataBase &#xC5D0; &#xC811;&#xADFC;&#xD558;&#xB294; &#xAC1D;&#xCCB4;(DAO) &#xD074;&#xB798;&#xC2A4;&#xC5D0;&#xC11C; &#xC4F0;&#xC774;&#xB294; &#xC5B4;&#xB178;&#xD14C;&#xC774;&#xC158;&#xC774;&#xB2E4;. DAO &#xC758; &#xC5ED;&#xD560;&#xC744; &#xC218;&#xD589;&#xD558;&#xB294; &#xD074;&#xB798;&#xC2A4;&#xC5D0;&#xC11C; &#xC4F0;&#xC778;&#xB2E4;.</p>
+<h3 id="requestmapping">@RequestMapping</h3>
+<p>class &#xC640; method &#xC5D0;&#xC11C; &#xBAA8;&#xB450; &#xC0AC;&#xC6A9;&#xB41C;&#xB2E4;. &#xC6F9; &#xC694;&#xCCAD;&#xACFC; &#xD2B9;&#xC815; &#xD074;&#xB798;&#xC2A4; &#xD639;&#xC740; &#xD2B9;&#xC815; &#xBA54;&#xC11C;&#xB4DC;&#xB97C; &#xB9E4;&#xD551;&#xC2DC;&#xD0AC;&#xB54C; &#xC4F4;&#xB2E4;. &#xBA54;&#xC11C;&#xB4DC;&#xB97C; &#xD578;&#xB4E4;&#xB9C1; &#xD560;&#xC218; &#xC788;&#xB294; URI &#xAC00; &#xC8FC;&#xC5B4;&#xC9C4;&#xB2E4;.
+&#xC6F9; &#xC694;&#xCCAD; &#xBC29;&#xBC95;&#xC73C;&#xB85C;&#xB294; GET, POST, PATCH, PUT, DELETE &#xAC00; &#xC788;&#xB2E4;.</p>
+<h3 id="pathvariable">@PathVariable</h3>
+<p>URI &#xC5D0;&#xC11C; &#xB118;&#xC5B4;&#xC624;&#xB294; &#xD30C;&#xB77C;&#xBBF8;&#xD130; &#xAC12;&#xC744; &#xD30C;&#xC2F1;&#xD560;&#xC218; &#xC788;&#xAC8C; &#xD55C;&#xB2E4;.</p>
+<h3 id="requestbody">@RequestBody</h3>
+<p>&#xC6F9; &#xC694;&#xCCAD;&#xC5D0;&#xC11C; &#xB118;&#xC5B4;&#xC624;&#xB294; request body &#xAC12;&#xB4E4;&#xC744; &#xD30C;&#xC2F1;&#xD560;&#xC218; &#xC788;&#xAC8C; &#xD55C;&#xB2E4;.</p>
+<h3 id="requestparam">@RequestParam</h3>
+<p>? &#xB4A4;&#xB85C; &#xB118;&#xC5B4;&#xC624;&#xB294; &#xD30C;&#xB77C;&#xBBF8;&#xD130; &#xAC12;&#xC744; &#xD30C;&#xC2F1;&#xD574;&#xC900;&#xB2E4;.</p>
+<h3 id="responsebody">@ResponseBody</h3>
+<p>HttpMessageConverter &#xB97C; &#xC774;&#xC6A9;&#xD558;&#xC5EC; JSON &#xD639;&#xC740; xml &#xB85C; &#xC694;&#xCCAD;&#xC5D0; &#xC751;&#xB2F5;&#xD560;&#xC218; &#xC788;&#xAC8C; &#xD574;&#xC8FC;&#xB294; &#xC5B4;&#xB178;&#xD14C;&#xC774;&#xC158;&#xC774;&#xB2E4;.</p>
+<h3 id="restcontroller">@RestController</h3>
+<p>class &#xC218;&#xC900;&#xC5D0;&#xC11C;&#xB9CC; &#xC4F0;&#xC774;&#xB294; &#xC5B4;&#xB178;&#xD14C;&#xC774;&#xC158;&#xC774;&#xB2E4;. &#xCEE8;&#xD2B8;&#xB864;&#xB7EC; &#xBA54;&#xC11C;&#xB4DC;&#xC5D0;&#xC11C; &#xBDF0;&#xB97C; &#xBC18;&#xD658;&#xD558;&#xC9C0; &#xC54A;&#xACE0;, &#xB3C4;&#xBA54;&#xC778;(&#xBAA8;&#xB378;) &#xAC1D;&#xCCB4;&#xB97C; &#xBC18;&#xD658;&#xD558;&#xB294; &#xC6A9;&#xB3C4;&#xB85C; &#xC4F0;&#xC778;&#xB2E4;.
+@RestController &#xC5B4;&#xB178;&#xD14C;&#xC774;&#xC158;&#xC744; &#xC4F0;&#xB294;&#xC21C;&#xAC04; &#xB530;&#xB85C; @ResponseBody &#xB97C; &#xC9C0;&#xC815;&#xD574;&#xC8FC;&#xC9C0; &#xC54A;&#xC544;&#xB3C4; &#xB41C;&#xB2E4;.</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Spring Framework 정리">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"1. Annotations","level":"1.1.1","depth":2,"previous":{"title":"Spring Framework 정리","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[{"title":"1. Annotations","level":"1.1.1","depth":2,"path":"chapter-1/README.md","ref":"chapter-1/README.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"chapter-1/README.md","mtime":"2018-10-20T17:37:45.981Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-10-20T17:22:10.529Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
