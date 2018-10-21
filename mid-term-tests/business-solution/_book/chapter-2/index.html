@@ -228,6 +228,64 @@ File 1, 2 &#xB97C; &#xBAA8;&#xB450; &#xB2E4;&#xC6B4;&#xB85C;&#xB4DC; &#xD574;&#x
 &#xB370;&#xC2A4;&#xD06C;&#xD1B1; &#xD074;&#xB798;&#xC2A4;&#xB85C; &#xC0DD;&#xC131;&#xD55C;&#xB2E4;.
 DB File &#xB4E4;&#xC744; &#xB2F4;&#xC744; &#xB514;&#xB809;&#xD130;&#xB9AC;&#xC640; &#xB8E8;&#xD2B8; &#xBE44;&#xBC00;&#xBC88;&#xD638;&#xB97C; &#xC124;&#xC815;&#xD55C;&#xB2E4;.</p>
 <p>&#xC774;&#xC81C; &#xAC1C;&#xBC1C;&#xD560; &#xBAA9;&#xC801;&#xC5D0; &#xB9DE;&#xAC8C; &#xACC4;&#xC815;&#xB4E4;&#xC744; &#xC124;&#xC815;&#xD574;&#xC8FC;&#xC5B4;&#xC57C; &#xD55C;&#xB2E4;. &#xBA3C;&#xC800; &#xC544;&#xAE4C; &#xB9CC;&#xB4E0; &#xB8E8;&#xD2B8; &#xACC4;&#xC815;&#xC73C;&#xB85C; &#xC811;&#xC18D;&#xC744; &#xD55C;&#xB2E4;&#xC74C;, DB &#xB97C; &#xB9CC;&#xB4E4;&#xACE0;, &#xC0C8;&#xB85C;&#xC6B4; &#xACC4;&#xC815;&#xC744; &#xBD80;&#xBD84;&#xC801;&#xC73C;&#xB85C; Admin &#xAD8C;&#xD55C;&#xC744; &#xBD80;&#xC5EC;&#xD558;&#xC5EC; &#xB9CC;&#xB4E0;&#xD6C4;, &#xBAA9;&#xC801;&#xC5D0; &#xB9DE;&#xB294; &#xD14C;&#xC774;&#xBE14;&#xB4E4;&#xC744; &#xC0DD;&#xC131;&#xD55C;&#xB2E4;.</p>
+<h3 id="&#xC124;&#xCE58;-&#xD6C4;-&#xACC4;&#xC815;-&#xC124;&#xC815;-&#xBC0F;-table-&#xC0DD;&#xC131;">&#xC124;&#xCE58; &#xD6C4; &#xACC4;&#xC815; &#xC124;&#xC815; &#xBC0F; Table &#xC0DD;&#xC131;</h3>
+<ul>
+<li>System &#xACC4;&#xC815;&#xC73C;&#xB85C; &#xC811;&#xC18D;.</li>
+<li>&#xACC4;&#xC815; &#xC0DD;&#xC131;</li>
+</ul>
+<pre><code class="lang-sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">USER</span> ats <span class="hljs-keyword">IDENTIFIED</span> <span class="hljs-keyword">BY</span> <span class="hljs-number">1234</span>;
+<span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">USER</span> ats <span class="hljs-keyword">ACCOUNT</span> <span class="hljs-keyword">UNLOCK</span>;
+</code></pre>
+<ul>
+<li>&#xAD8C;&#xD55C; &#xBD80;&#xC5EC; (grant resource, DBA, connect to ats)</li>
+</ul>
+<pre><code class="lang-sql"><span class="hljs-keyword">GRANT</span> <span class="hljs-keyword">RESOURCE</span>, DBA <span class="hljs-keyword">CONNECT</span> <span class="hljs-keyword">TO</span> ats;
+</code></pre>
+<ul>
+<li>Table Space &#xBC0F; &#xC784;&#xC2DC; Table Space &#xC0DD;&#xC131;.</li>
+</ul>
+<pre><code class="lang-sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLESPACE</span> ats_data
+<span class="hljs-keyword">DATAFILE</span> <span class="hljs-string">&apos;C:\oraclexe\app\oracle\oradata\XE\ats_data.dbf&apos;</span> <span class="hljs-keyword">SIZE</span> <span class="hljs-number">1</span>G
+<span class="hljs-keyword">AUTOEXTEND</span> <span class="hljs-keyword">ON</span> <span class="hljs-keyword">NEXT</span> <span class="hljs-number">512</span>M <span class="hljs-keyword">MAXSIZE</span> <span class="hljs-keyword">UNLIMITED</span>
+<span class="hljs-keyword">LOGGING</span>
+<span class="hljs-keyword">ONLINE</span>
+<span class="hljs-keyword">PERMANENT</span>
+<span class="hljs-keyword">EXTENT</span> <span class="hljs-keyword">MANAGEMENT</span> <span class="hljs-keyword">LOCAL</span> <span class="hljs-keyword">AUTOALLOCATE</span>
+<span class="hljs-keyword">BLOCKSIZE</span> <span class="hljs-number">8</span>K
+<span class="hljs-keyword">SEGMENT</span> <span class="hljs-keyword">SPACE</span> <span class="hljs-keyword">MANAGEMENT</span> <span class="hljs-keyword">AUTO</span>
+<span class="hljs-keyword">FLASHBACK</span> <span class="hljs-keyword">ON</span>
+
+<span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TEMPORARY</span> <span class="hljs-keyword">TABLESPACE</span> ats_tmp
+TEMPFILE <span class="hljs-string">&apos;C:\oraclexe\app\oracle\oradata\XE\ats_tmp.dbf&apos;</span> <span class="hljs-keyword">SIZE</span> <span class="hljs-number">512</span>M
+<span class="hljs-keyword">AUTOEXTEND</span> <span class="hljs-keyword">ON</span> <span class="hljs-keyword">NEXT</span> <span class="hljs-number">128</span>M <span class="hljs-keyword">MAXSIZE</span> <span class="hljs-keyword">UNLIMITED</span>
+</code></pre>
+<ul>
+<li>Table Space &#xC5D0; &#xACC4;&#xC815; &#xC5F0;&#xACB0;</li>
+</ul>
+<pre><code class="lang-sql"><span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">USER</span> ats <span class="hljs-keyword">DEFAULT</span> <span class="hljs-keyword">TABLESPACE</span> ats_data;
+<span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">USER</span> ats <span class="hljs-keyword">TEMPORARY</span> <span class="hljs-keyword">TABLESPACE</span> ats_tmp;
+</code></pre>
+<ul>
+<li>&#xC608;&#xC2DC; &#xD14C;&#xC774;&#xBE14; &#xC0DD;&#xC131;</li>
+</ul>
+<pre><code class="lang-sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> TB_TRD_JONGMOK (
+    USER_ID VARCHAR2(<span class="hljs-number">8</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span>,
+    JONGMOK_CD <span class="hljs-built_in">CHAR</span>(<span class="hljs-number">6</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span>,
+    JONGMOK_NM VARCHAR2(<span class="hljs-number">150</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span>,
+    <span class="hljs-keyword">PRIORITY</span> <span class="hljs-built_in">NUMBER</span>(<span class="hljs-number">9</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span>,
+    BUY_AMT <span class="hljs-built_in">NUMBER</span>(<span class="hljs-number">15</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span>,
+    BUY_PRICE <span class="hljs-built_in">NUMBER</span>(<span class="hljs-number">9</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span>,
+    TARGET_PRICE <span class="hljs-built_in">NUMBER</span>(<span class="hljs-number">9</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span>,
+    CUT_LOSS_PRICE <span class="hljs-built_in">NUMBER</span>(<span class="hljs-number">9</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span>,
+    BUY_TRD_YN <span class="hljs-built_in">CHAR</span>(<span class="hljs-number">1</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span>,
+    SELL_TRD_YN <span class="hljs-built_in">CHAR</span>(<span class="hljs-number">1</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span>,
+    INST_ID VARCHAR2(<span class="hljs-number">50</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span>,
+    INST_DTM <span class="hljs-built_in">DATE</span> <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span>,
+    UPDT_ID VARCHAR2(<span class="hljs-number">50</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span>,
+    UPDT_DTM <span class="hljs-built_in">DATE</span> <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span>,
+    <span class="hljs-keyword">CONSTRAINT</span> TB_TRD_JONGMOK_PK PRIMARY <span class="hljs-keyword">KEY</span>(USER_ID, JONGMOK_CD)
+);
+</code></pre>
 
                                 
                                 </section>
@@ -271,7 +329,7 @@ DB File &#xB4E4;&#xC744; &#xB2F4;&#xC744; &#xB514;&#xB809;&#xD130;&#xB9AC;&#xC64
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"2. ORACLE DB 설치 및 환경 설정 절차","level":"1.1.2","depth":2,"next":{"title":"3. 지연메서드를 사용하는 이유","level":"1.1.3","depth":2,"path":"chapter-3/README.md","ref":"chapter-3/README.md","articles":[]},"previous":{"title":"1. OpenAPI 란 무엇인가?","level":"1.1.1","depth":2,"path":"chapter-1/README.md","ref":"chapter-1/README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"chapter-2/README.md","mtime":"2018-10-16T15:11:19.005Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-10-21T12:10:20.077Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"2. ORACLE DB 설치 및 환경 설정 절차","level":"1.1.2","depth":2,"next":{"title":"3. 지연메서드를 사용하는 이유","level":"1.1.3","depth":2,"path":"chapter-3/README.md","ref":"chapter-3/README.md","articles":[]},"previous":{"title":"1. OpenAPI 란 무엇인가?","level":"1.1.1","depth":2,"path":"chapter-1/README.md","ref":"chapter-1/README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"chapter-2/README.md","mtime":"2018-10-21T15:32:45.586Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-10-21T15:18:37.116Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
